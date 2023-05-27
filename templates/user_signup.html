@@ -1,0 +1,52 @@
+{% extends "index_layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  </head>
+<body>
+    {% block content %}
+    <section class="home" id="home">
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h2>User Sign Up</h2>
+    <form action="/user_signup_insert" method="POST">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Mobile</label>
+            <input type="text" name="mobile" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" maxlength="10" pattern="[0-9]{10}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <img src="../static/images/CAPTCHA.png" width="200px" height="50px" alt="">
+        <div class="form-group">
+            <label for="exampleInputPassword1">Enter Captcha</label>
+            <input type="text" name="captcha" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-warning mt-2">Sign Up Now</button>
+    </form>
+    Already Registered?<a href="/user_login">Login Now</a>
+    
+    </div>
+    </section>
+    {% endblock %}
+</body>
+</html>

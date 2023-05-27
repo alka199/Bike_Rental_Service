@@ -1,0 +1,41 @@
+{% extends "index_layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<body>
+    {% block content %}
+    <section class="home" id="home">
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h2>Provider Login</h2>
+    <form action="/provider_login_verify" method="POST">
+       
+        <div class="form-group">
+            <label for="exampleInputEmail1">Provider ID</label>
+            <input type="text" name="provider_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+        </div>
+       
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        
+        <button type="submit" class="btn btn-warning mt-2">Login Now</button>
+    </form>
+    New Service Provider?<a href="/provider_signup">Sign up Now</a>
+    </div>
+    </section>
+    {% endblock %}
+</body>
+</html>

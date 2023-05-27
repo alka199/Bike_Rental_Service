@@ -1,0 +1,59 @@
+{% extends "provider_layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  </head>
+<body>
+    {% block content %}
+    <section class="home" id="home">
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <br>
+        <h2>New Bike</h2>
+        
+    <form action="/provider_bike_insert" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Model Name</label>
+            <input type="text" name="model_name"  class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+        
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Registration Number</label>
+            <input type="text" name="reg_no" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Charge (per day)</label>
+            <input type="text" name="charge" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">MFG Date</label>
+            <input type="date" name="mfg_date"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <textarea name="descp" class="form-control" id="" cols="20" rows="8"></textarea>
+        </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Upload Photo</label>
+        <input type="file" name="photo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+       
+        <button type="submit" class="btn btn-warning mt-2">New Bike</button>
+    </form>
+  
+    </div>
+    </section>
+    {% endblock %}
+</body>
+</html>

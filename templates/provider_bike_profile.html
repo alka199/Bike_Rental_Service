@@ -1,0 +1,61 @@
+{% extends "provider_layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  </head>
+<body>
+    {% block content %}
+    <section class="home" id="home">
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h2>Bike Details</h2>
+    {% for r in rec %}
+    <form action="/provider_bike_profile_update?bike_id={{r[0]}}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Bike ID</label>
+            <input type="text" name="bike_id" value="{{r[0]}}" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" disabled>
+        
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Model Name</label>
+            <input type="text" name="model_name" value="{{r[1]}}"  class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+        
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Registration Number</label>
+            <input type="text" name="reg_no" value="{{r[2]}}"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Charge (per day)</label>
+            <input type="text" name="charge" value="{{r[3]}}"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">MFG Date</label>
+            <input type="date" name="mfg_date"  class="form-control" value="{{r[4]}}"id="exampleInputEmail1" aria-describedby="emailHelp" >
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <textarea name="descp" class="form-control" id="" cols="30" rows="10">{{r[5]}}</textarea>
+        </div>
+        
+        
+        <button type="submit" class="btn btn-warning mt-2">Update</button>
+    </form>
+  {% endfor %}
+    </div>
+    </section>
+    {% endblock %}
+</body>
+</html>

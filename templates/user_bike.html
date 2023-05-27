@@ -1,0 +1,57 @@
+{% extends "user_layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+</head>
+
+<body>
+{% block content %}
+    
+    <section class="services" id="services">
+        <br>
+        <div class="heading mt-5 pt-5">
+            <form action="/user_bike_search" method="POST">
+            <div class="form-group">
+                <label for="exampleInputEmail1">City</label>
+                <select name="city" class="form-control" id="">
+                    <option value="" disabled selected>--select the city---</option>
+                    <option>Ranchi</option>
+                    <option>Jaipur</option>
+                    <option>Patna</option>
+                    <option>Delhi</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-warning mt-2">Search</button> 
+            </form>  
+        
+        <a href="/user_bike_voice_search">Voice Search</a>
+        <h1>Bike Search</h1>
+    </div>
+        <div class="services-container">
+            {% for r in rec %}
+            <div class="box">
+                <div class="box-img">
+                    <img src="../static/bike/{{r[0]}}" alt="">
+                </div>
+                <h4>{{r[1]}}</h4>
+                <h6 class="text-success">{{r[4]}}</h6>
+                
+                <h2>₹{{r[3]}}<span>/day</span></h2>
+                <p>
+                    <div>{{r[2]}}</div>
+                    {{r[5]}}
+                </p>
+                <a href="/user_bike_date?bike_id={{r[6]}}&provider_id={{r[7]}}&charges={{r[3]}}" class="btn">Rent Now</a>
+                <div class="mx-3 mt-3 mb-2"><a href="/user_review?bike_id={{r[6]}}">Review</a></div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+   
+{% endblock %}
+   
+</body>
+
+</html>

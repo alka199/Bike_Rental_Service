@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/provider.css">
+    
+</head>
+<body>
+    <div id="viewport">
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <header>
+      <img class="rounded-circle" src="../static/images/profile1.png" width="100px" height="100px">
+      <a href="#"></a>
+    </header>
+    <header>
+      <a href="/admin_provider_report" class="btn-warning border-bottom"><button class="btn">Provider</button></a>
+    </header>
+    <header>
+      <a href="/admin_service_report" class="btn-warning border-bottom"><button class="btn">Service</button></a>
+    </header>
+    
+    <header>
+      <a href="/admin_logout" class="btn-warning"><button class="btn">Sign Out</button></a>
+    </header>
+    
+  </div>
+  <!-- Content -->
+  <div id="content">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
+            </a>
+          </li>
+          <li><a href="#"></a></li>
+        </ul>
+      </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+   
+  </div>
+</div>
+</body>
+</html>

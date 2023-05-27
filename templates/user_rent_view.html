@@ -1,0 +1,54 @@
+{% extends "user_layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  </head>
+<body>
+    {% block content %}
+    <section id="home" class="mt-5">
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h2 class="text-center text-danger ">Rent history</h2>
+        <table class="table table-hover table-success">
+            <thead>
+                <tr>
+                    <th scope="col">Rent ID</th>
+                    <th scope="col">Reg Number</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Start</th>
+                    <th scope="col">End</th>
+                    <th scope="col">charges</th>
+                    <th scope="col">Photo</th>                   
+                </tr>
+            </thead>
+            <tbody>
+        {% for r in rec %}
+            
+                    <tr>
+                        <th>{{r[0]}}</th>
+                        <td>{{r[1]}}</td>
+                        <td>{{r[2]}}</td>
+                        <td>{{r[3]}}</td>
+                        <td>{{r[4]}}</td>
+                        <td>{{r[5]}}</td>
+                        <td>{{r[6]}}</td>
+                        <td><img src="../static/bike/{{r[7]}}" width="50px" height="50px" alt=""></td>
+                    </tr>
+                 
+        {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    </section>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,136 @@
+{% extends "user_layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <title>Customer Dashboard</title>
+   	 
+</head>
+    
+    <body>
+    {% block content %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <section class="services" id="services">
+      
+      <div class="heading">
+   <section id="book-a-table" class="book-a-table">
+      <div class="container" data-aos="fade-up">
+        <br>
+        <div class="section-title">
+          <h2>Customer</h2>
+          <p>Review</p>
+        </div>
+       <br>
+        <form action="/user_review_insert?bike_id={{bike_id}}" method="post" role="form"  enctype="multipart/form-data">
+         
+          <div class="row">
+           
+          
+    <div class="col-12 form-group mt-3 mt-md-0">
+    <input type="radio" class="rate" id="star" name="star" value="5" true />
+    <label for="star5" title="text">5 stars</label>
+    <input type="radio" class="rate" id="star" name="star" value="4" />
+    <label for="star4" title="text">4 stars</label>
+    <input type="radio" class="rate" id="star" name="star" value="3" />
+    <label for="star3" title="text">3 stars</label>
+    <input type="radio" class="rate" id="star" name="star" value="2" />
+    <label for="star2" title="text">2 stars</label>
+    <input type="radio" class="rate" id="star" name="star" value="1" />
+    <label for="star1" title="text">1 star</label>
+  </div>
+            <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="write your review about this receipe"></textarea>
+            
+          </div>
+          </div>
+          <div class="text-center mt-2"><button class="btn btn-warning" type="submit">Submit </button></div>
+        </form>
+      
+      </div>
+    </section>
+
+    </div>
+    </section>
+    
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Review</h2>
+        </div><hr>
+
+        <div class="row">
+            {% for r in rec %}
+          <div class="col-lg-4 mt-1">
+            <div class="box" >
+            {% if(r[0]==5) %}
+              <div class="d-flex flex-row">
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              </div>
+            {% endif %}
+
+              {% if(r[0]==4) %}
+              <div class="d-flex flex-row">
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star"></span>
+              </div>
+              {% endif %}
+
+              {% if(r[0]==3) %}
+              <div class="d-flex flex-row">
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              </div>
+              {% endif %}
+
+              {% if(r[0]==2) %}
+              <div class="d-flex flex-row">
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              </div>
+            {% endif %}
+
+            {% if(r[0]==1) %}
+              <div class="d-flex flex-row">
+              <span class="fa fa-star" id="mycheck"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              </div>
+            {% endif %}
+              <h5>{{r[1]}}</h5>
+              <p>{{r[2]}}</p>
+            </div>
+          </div>
+
+        {% endfor %}
+        </div>
+
+      </div>
+    
+{% endblock %}
+</body>
+
+</html>
